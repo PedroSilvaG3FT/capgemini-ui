@@ -1,0 +1,55 @@
+<div class="container import-container">
+	<div class="import-content">
+
+		<nav class="header-content">
+			<h4 class="title">Importações</h4>
+			<label for="file-upload" class="btn btn-secondary">
+				Importar Excel
+			</label>
+
+			<input
+				type="file"
+				accept=".xlsx"
+				id="file-upload"
+				style="display: none;"
+				(change)="selecionaArquivo($event.target.files)"
+			/>
+		</nav>
+
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th class="text-left">Nome Produto</th>
+					<th class="text-left">Data Entrega</th>
+					<th class="text-left">Quantidade</th>
+					<th class="text-right">Valor</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr *ngFor="let import of importsL">
+					<td width="4%" id="icon-col">{{import.id}}</td>
+					<td class="text-left">{{import.nomeProduto}}</td>
+					<td class="text-left">
+						{{import.dataEntrega | date:'dd/MM/yyyy'}}
+					</td>
+					<td class="text-left">{{import.quantidade}}</td>
+					<td width="16%" class="text-right">
+						{{import.valorUnitario | currency:'BRL':true}}
+					</td>
+				</tr>
+			</tbody>
+
+			<tfoot>
+				<th class="text-left">Total</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th class="text-right">
+					{{totalValue | currency:'BRL':true}}
+				</th>
+			</tfoot>
+		</table>
+	</div>
+</div>

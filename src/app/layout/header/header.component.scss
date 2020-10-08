@@ -1,0 +1,53 @@
+@import '../variables.scss';
+
+.header-container {
+    height: $header-height;
+    background: $bg-header;
+    padding-left:  $padding-horizontal-header;
+    padding-right: $padding-horizontal-header;
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left:  8px;
+        padding-right: 8px;
+
+        .logo-header {
+            max-width: 45px;
+            margin-right: 5px;
+        }
+
+        #routes-area {
+            margin-left: auto;
+        }
+
+        #icon-area {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+        width: 100%;
+        padding: 0%;
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between !important;
+
+            #routes-area {
+                display: none;
+            }
+
+            #icon-area {
+                img { 
+                    width: 30px 
+                }
+                display: initial;
+            }
+        }
+    }
+}

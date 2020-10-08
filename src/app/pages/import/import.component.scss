@@ -1,0 +1,40 @@
+@import '../../layout/variables.scss';
+
+.import-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 10%;
+    padding-right: 10%;
+
+    .import-content {
+        width: 100%;
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .import-container {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+
+    }
+}
+
+@media (min-width: 591px) and (max-width: 768px) {
+    .import-container {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
