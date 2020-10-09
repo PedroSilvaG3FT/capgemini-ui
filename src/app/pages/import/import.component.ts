@@ -34,7 +34,7 @@ export class ImportComponent implements OnInit {
 
   get valorTotal(): number {
     const TOTAL_VALUE = this.importsL ? this.importsL.reduce((currentValue, item) => {
-      return currentValue + item.valorUnitario;
+      return currentValue + (item.valorUnitario * item.quantidade);
     }, 0) : 0;
 
     return TOTAL_VALUE;

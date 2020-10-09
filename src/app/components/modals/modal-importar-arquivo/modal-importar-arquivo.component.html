@@ -37,6 +37,7 @@
 			accept=".xlsx"
 			id="file-upload"
 			style="display: none;"
+			[(ngModel)]="inputFileValue"
 			(change)="selecionaArquivo($event.target.files)"
 		/>
 	</div>

@@ -4,7 +4,7 @@
 		<nav class="header-content">
 			<h4 class="title">Importações</h4>
 
-			<button mat-raised-button (click)="openModalImportarArquivo()">Importar Excel</button>
+			<button mat-raised-button color="accent" (click)="openModalImportarArquivo()">Importar Excel</button>
         </nav>
         
 		<table>
@@ -31,7 +31,12 @@
 						{{import.valorUnitario | currency:'BRL':true}}
 					</td>
 					<td class="text-right">
-						<button mat-raised-button (click)="openModalImportacao(import.id)">Visualizar</button>
+						<button 
+							mat-raised-button 
+							matTooltip="Visualizar Iportação"
+							(click)="openModalImportacao(import.id)">
+							<mat-icon color="primary">remove_red_eye</mat-icon>
+						</button>
 					</td>
 				</tr>
 			</tbody>

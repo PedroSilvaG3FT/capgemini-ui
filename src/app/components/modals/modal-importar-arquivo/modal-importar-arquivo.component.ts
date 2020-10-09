@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,6 +15,7 @@ export class ModalImportarArquivoComponent implements OnInit {
   public arquivoSeleconado: File = null;
   public templateImportacao = TEMPLATE_IMPORTACAO;
   public errorsList: string[] = [];
+  public inputFileValue = null;
 
   constructor(
     private importService: ImportService,
@@ -42,10 +44,17 @@ export class ModalImportarArquivoComponent implements OnInit {
             this.dialogRef.close(response);
           },
           (error) => {
-            const errorsList = JSON.parse(error.error);
-            this.errorsList = errorsList;
+            if (error.error[0] === '[') {
+              const errorsList = JSON.parse(error.error);
+              this.errorsList = errorsList;
+            }else {
+              this.errorsList.push(error.error);
+            }
+
             this.arquivoSeleconado = null;
+            this.inputFileValue = null;
             this.nomeArquivo = '';
+
             setTimeout(() => {
               this.errorsList = [];
             }, 7000);

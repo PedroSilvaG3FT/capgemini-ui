@@ -23,7 +23,6 @@ export class ModalImportacaoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('data :', this.data);
     this.obterImportacao();
   }
 
