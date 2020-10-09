@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Importar Arquivo XLSX</h1>
+<div mat-dialog-content style="width: 500px;">
+	<div>
+		<h4>1. Fazer o download do modelo e preencher:</h4>
+		<a
+			mat-mini-fab
+			[href]="templateImportacao.caminho"
+			[download]="templateImportacao.nome"
+		>
+			<mat-icon aria-hidden="false" aria-label="Example home icon">
+				cloud_download
+			</mat-icon>
+		</a>
+	</div>
+
+	<br />
+
+	<div>
+		<h4>2. Selecionar o arquivo preenchido:</h4>
+
+		<mat-form-field class="example-full-width">
+			<mat-label>Nome Arquivo</mat-label>
+			<input
+				matInput
+				disabled
+				placeholder="Nome Arquivo"
+				[(ngModel)]="nomeArquivo"
+			/>
+		</mat-form-field>
+
+		<label for="file-upload" class="btn btn-secondary">
+			Importar Excel
+		</label>
+
+		<input
+			type="file"
+			accept=".xlsx"
+			id="file-upload"
+			style="display: none;"
+			(change)="selecionaArquivo($event.target.files)"
+		/>
+	</div>
+
+	<div>
+		<ul *ngFor="let erro of errorsList">
+			<li>{{erro}}</li>
+		</ul>
+	</div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="closeModal()">Voltar</button>
+</div>

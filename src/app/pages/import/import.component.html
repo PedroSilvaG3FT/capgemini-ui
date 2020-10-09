@@ -3,19 +3,10 @@
 
 		<nav class="header-content">
 			<h4 class="title">Importações</h4>
-			<label for="file-upload" class="btn btn-secondary">
-				Importar Excel
-			</label>
 
-			<input
-				type="file"
-				accept=".xlsx"
-				id="file-upload"
-				style="display: none;"
-				(change)="selecionaArquivo($event.target.files)"
-			/>
-		</nav>
-
+			<button mat-raised-button (click)="openModalImportarArquivo()">Importar Excel</button>
+        </nav>
+        
 		<table>
 			<thead>
 				<tr>
@@ -24,6 +15,7 @@
 					<th class="text-left">Data Entrega</th>
 					<th class="text-left">Quantidade</th>
 					<th class="text-right">Valor</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -38,6 +30,9 @@
 					<td width="16%" class="text-right">
 						{{import.valorUnitario | currency:'BRL':true}}
 					</td>
+					<td class="text-right">
+						<button mat-raised-button (click)="openModalImportacao(import.id)">Visualizar</button>
+					</td>
 				</tr>
 			</tbody>
 
@@ -47,8 +42,9 @@
 				<th></th>
 				<th></th>
 				<th class="text-right">
-					{{totalValue | currency:'BRL':true}}
+					{{valorTotal | currency:'BRL':true}}
 				</th>
+				<th></th>
 			</tfoot>
 		</table>
 	</div>

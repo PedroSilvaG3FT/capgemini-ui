@@ -1,15 +1,4 @@
-<div class="header-container">
-    <div class="header-content">
-        <h4>Capgemini</h4>
-
-        <div class="btn-group" id="routes-area">
-            <button *ngFor="let route of routesMenu" [routerLink]="[route.link]">
-                {{route.name}}
-            </button>
-        </div>
-
-        <div id="icon-area" (click)="showMenuMobile = !showMenuMobile">
-            <img src="assets/icons/menu.svg" class="logo-header">
-        </div>
-    </div>
-</div>
+<mat-toolbar color="primary">
+	<span>Capgemini</span>
+	<span class="example-spacer"></span>
+</mat-toolbar>

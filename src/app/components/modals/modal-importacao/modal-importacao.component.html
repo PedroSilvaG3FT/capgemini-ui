@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Dados Importação</h1>
+<div mat-dialog-content>
+	<mat-form-field class="example-full-width">
+		<mat-label>Nome Produto</mat-label>
+		<input matInput disabled placeholder="Nome Arquivo" [(ngModel)]="importacao.nomeProduto" />
+	</mat-form-field>
+
+	<mat-form-field class="example-full-width">
+		<mat-label>Data Entrega</mat-label>
+		<input matInput disabled placeholder="Nome Arquivo" [(ngModel)]="importacao.dataEntrega" />
+	</mat-form-field>
+
+	<mat-form-field class="example-full-width">
+		<mat-label>Quantidade</mat-label>
+		<input matInput disabled placeholder="Nome Arquivo" [(ngModel)]="importacao.quantidade" />
+	</mat-form-field>
+
+	<mat-form-field class="example-full-width">
+		<mat-label>Valor</mat-label>
+		<input matInput disabled placeholder="Nome Arquivo" [(ngModel)]="importacao.valorUnitario" />
+	</mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+	<button mat-button (click)="closeModal()">Voltar</button>
+</div>

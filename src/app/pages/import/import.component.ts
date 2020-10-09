@@ -1,27 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionInterface } from 'src/app/interfaces/transaction.interface';
+import { ImportacaoInterface } from 'src/app/interfaces/transaction.interface';
 import { ImportService } from 'src/app/services/import.service';
-import { environment } from 'src/environments/environment';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ModalImportarArquivoComponent } from 'src/app/components/modals/modal-importar-arquivo/modal-importar-arquivo.component';
+import { ModalImportacaoComponent } from 'src/app/components/modals/modal-importacao/modal-importacao.component';
 @Component({
   selector: 'app-import',
   templateUrl: './import.component.html',
   styleUrls: ['./import.component.scss']
 })
 export class ImportComponent implements OnInit {
-  public transaction: TransactionInterface = {} as TransactionInterface;
-  public importsL: TransactionInterface[] = [];
+  public transaction: ImportacaoInterface = {} as ImportacaoInterface;
+  public importsL: ImportacaoInterface[] = [];
 
-  public nomeArquivo = '';
-  public arquivoSeleconado: File = null;
 
-  constructor(private importService: ImportService) { }
+  constructor(
+    private importService: ImportService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
-    this.searchImports();
+    this.buscaImportacoes();
   }
 
-  searchImports(): void {
+  buscaImportacoes(): void {
     this.importService
       .getImportacoes()
       .toPromise()
@@ -30,29 +32,26 @@ export class ImportComponent implements OnInit {
       });
   }
 
-  selecionaArquivo(files?: FileList): void {
-    if (files.item(0)) {
-      this.arquivoSeleconado = files.item(0);
-      this.nomeArquivo = this.arquivoSeleconado.name;
-
-      const file = new FormData();
-      file.append('file', this.arquivoSeleconado);
-
-      this.importService
-        .enviarImportacaoXlsx(file)
-        .subscribe(response => {
-          console.log('RESP :', response);
-        });
-      console.log('NOME ', this.nomeArquivo);
-    }
-  }
-
-  get totalValue(): number {
+  get valorTotal(): number {
     const TOTAL_VALUE = this.importsL ? this.importsL.reduce((currentValue, item) => {
       return currentValue + item.valorUnitario;
     }, 0) : 0;
 
     return TOTAL_VALUE;
+  }
+
+  openModalImportarArquivo(): void {
+    this.dialog
+      .open(ModalImportarArquivoComponent)
+      .afterClosed()
+      .subscribe(() => this.buscaImportacoes());
+  }
+
+  openModalImportacao(id: number): void {
+    this.dialog
+      .open(ModalImportacaoComponent, { data: id })
+      .afterClosed()
+      .subscribe(() => this.buscaImportacoes());
   }
 
 }
