@@ -37,7 +37,7 @@ import { ModalImportacaoComponent } from './components/modals/modal-importacao/m
     BrowserAnimationsModule,
   ],
   providers: [
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } }
   ],
   bootstrap: [AppComponent]
 })
