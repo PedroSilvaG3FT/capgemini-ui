@@ -16,68 +16,17 @@ body {
   background: white;
   margin: 0;
 }
-// =.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.= //
-.btn-group button {
-  background-color: white;
-  border: none;
-  border-right: 0.5px solid $color-secondary;
-  padding: 10px 24px;
-  cursor: pointer;
-}
-
-.btn-group button:hover {
-  background-color: $color-secondary;
-}
-
-.btn-group button:last-child {
-  border-right: none; 
-  border-top-right-radius: $border-radius-button;
-  border-bottom-right-radius: $border-radius-button;
-}
-
-.btn-group button:first-child {
-  border-top-left-radius: $border-radius-button;
-  border-bottom-left-radius: $border-radius-button;
-}
-// =.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.= //
 
 .container {
   padding: 16px;
 }
 
-// =.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.= //
-.form-group {
-  margin-bottom: 1rem;
-
-  label {
-    display: inline-block;
-    margin-bottom: .5rem;
-  }
-
-  .form-control {
-    width: 100%; 
-    padding: 8px;  
-    border: 1px solid $color-secondary; 
-    border-radius: $border-radius-button; 
-    box-sizing: border-box; 
-    resize: vertical 
-  }
-}
 
 .btn {
   padding: 12px 20px;
   border: none;
   border-radius: $border-radius-button;
   cursor: pointer;
-}
-
-.btn-primary {
-  background-color: $color-primary;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: darken($color: $color-primary, $amount: 10);
 }
 
 .btn-secondary {
